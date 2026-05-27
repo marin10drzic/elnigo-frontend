@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 const hours = [
-  { day: "Monday – Thursday", time: "5:00 PM – 11:00 PM" },
-  { day: "Friday – Saturday", time: "5:00 PM – 12:00 AM" },
-  { day: "Sunday", time: "4:00 PM – 10:00 PM" },
+  { day: "Dienstag – Samstag", time: "11:30 – 23:00 Uhr" },
+  { day: "Sonntag", time: "11:30 – 23:00 Uhr" },
+  { day: "Montag", time: "Geschlossen" },
 ];
 
-const navLinks = ["Menu", "About Us", "Reservations", "Private Dining", "Contact"];
+const navLinks = ["Speisekarte", "Über uns", "Reservierungen", "Privates Dinner", "Kontakt"];
 
 export function Footer() {
   return (
@@ -19,7 +19,7 @@ export function Footer() {
               EL NIGO
             </h3>
             <p className="text-stone-500 text-sm leading-relaxed mb-6">
-              Premium steakhouse offering an unforgettable dining experience in the heart of Zagreb.
+              Premium Steakhouse für unvergessliche Abende — seit über 30 Jahren mit Leidenschaft für das perfekte Steak.
             </p>
             <div className="flex gap-2">
               {[
@@ -42,7 +42,7 @@ export function Footer() {
           {/* Navigation */}
           <div>
             <h4 className="text-[10px] tracking-[0.35em] text-amber-500/80 uppercase mb-5">
-              Navigate
+              Navigation
             </h4>
             <ul className="space-y-3">
               {navLinks.map((item) => (
@@ -61,7 +61,7 @@ export function Footer() {
           {/* Hours */}
           <div>
             <h4 className="text-[10px] tracking-[0.35em] text-amber-500/80 uppercase mb-5">
-              Hours
+              Öffnungszeiten
             </h4>
             <ul className="space-y-4">
               {hours.map(({ day, time }) => (
@@ -76,30 +76,22 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h4 className="text-[10px] tracking-[0.35em] text-amber-500/80 uppercase mb-5">
-              Find Us
+              Adresse
             </h4>
             <address className="not-italic space-y-4">
               <div>
                 <p className="text-stone-400 text-sm leading-relaxed">
-                  Ilica 123
+                  Rhönstraße 30
                   <br />
-                  10000 Zagreb, Croatia
+                  60316 Frankfurt am Main
                 </p>
               </div>
               <div>
                 <a
-                  href="tel:+38512345678"
+                  href="tel:+496930066661"
                   className="text-stone-400 text-sm hover:text-amber-400 transition-colors"
                 >
-                  +385 1 234 5678
-                </a>
-              </div>
-              <div>
-                <a
-                  href="mailto:info@elnigo.hr"
-                  className="text-stone-400 text-sm hover:text-amber-400 transition-colors"
-                >
-                  info@elnigo.hr
+                  +49 69 30066661
                 </a>
               </div>
             </address>
@@ -109,10 +101,10 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="border-t border-amber-900/20 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-stone-600 text-xs">
-            © {new Date().getFullYear()} El Nigo Steakhouse. All rights reserved.
+            © {new Date().getFullYear()} El Nigo Steakhouse. Alle Rechte vorbehalten.
           </p>
           <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service"].map((item) => (
+            {["Datenschutz", "Impressum"].map((item) => (
               <Link
                 key={item}
                 href="#"

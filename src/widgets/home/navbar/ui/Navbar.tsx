@@ -3,7 +3,12 @@
 import Link from "next/link";
 import { useState } from "react";
 
-const navLinks = ["Menu", "About", "Reservations", "Contact"];
+const navLinks = [
+  { label: "Speisekarte", href: "#menu" },
+  { label: "Über uns", href: "#about" },
+  { label: "Reservierungen", href: "#reservations" },
+  { label: "Kontakt", href: "#contact" },
+];
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
@@ -16,13 +21,13 @@ export function Navbar() {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((item) => (
+          {navLinks.map(({ label, href }) => (
             <Link
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={href}
+              href={href}
               className="text-xs tracking-[0.25em] text-stone-300 hover:text-amber-400 transition-colors duration-200"
             >
-              {item.toUpperCase()}
+              {label.toUpperCase()}
             </Link>
           ))}
         </div>
@@ -31,12 +36,12 @@ export function Navbar() {
           href="#reservations"
           className="hidden md:inline-flex items-center px-5 py-2.5 border border-amber-500/70 text-amber-400 text-xs tracking-[0.2em] hover:bg-amber-500 hover:text-black transition-all duration-200"
         >
-          RESERVE A TABLE
+          TISCH RESERVIEREN
         </Link>
 
         <button
           onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
+          aria-label="Menü öffnen"
           className="md:hidden flex flex-col gap-1.5 p-1"
         >
           <span className={`block w-6 h-px bg-amber-400 transition-all duration-300 ${open ? "rotate-45 translate-y-2.5" : ""}`} />
@@ -47,14 +52,14 @@ export function Navbar() {
 
       {open && (
         <div className="md:hidden bg-[#0d0b09] border-t border-amber-900/20 px-6 py-6 flex flex-col gap-5">
-          {navLinks.map((item) => (
+          {navLinks.map(({ label, href }) => (
             <Link
-              key={item}
-              href={`#${item.toLowerCase()}`}
+              key={href}
+              href={href}
               onClick={() => setOpen(false)}
               className="text-xs tracking-[0.25em] text-stone-300 hover:text-amber-400 transition-colors"
             >
-              {item.toUpperCase()}
+              {label.toUpperCase()}
             </Link>
           ))}
           <Link
@@ -62,7 +67,7 @@ export function Navbar() {
             onClick={() => setOpen(false)}
             className="mt-2 inline-flex justify-center px-5 py-3 border border-amber-500/70 text-amber-400 text-xs tracking-[0.2em] hover:bg-amber-500 hover:text-black transition-all"
           >
-            RESERVE A TABLE
+            TISCH RESERVIEREN
           </Link>
         </div>
       )}

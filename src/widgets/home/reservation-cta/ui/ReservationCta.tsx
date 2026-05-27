@@ -33,10 +33,10 @@ export function ReservationCta() {
         </p>
 
         <a
-          href="tel:+38512345678"
+          href="tel:+496930066661"
           className="inline-block font-serif text-2xl md:text-3xl text-amber-400 tracking-[0.15em] mb-10 hover:text-amber-300 transition-colors"
         >
-          +385 1 234 5678
+          +49 69 30066661
         </a>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -47,7 +47,7 @@ export function ReservationCta() {
             ONLINE BUCHEN
           </a>
           <a
-            href="tel:+38512345678"
+            href="tel:+496930066661"
             className="px-10 py-4 border border-amber-500/60 text-amber-400 text-xs tracking-[0.25em] hover:bg-amber-500/10 hover:border-amber-400 transition-all duration-200"
           >
             ANRUFEN
@@ -55,7 +55,7 @@ export function ReservationCta() {
         </div>
 
         <p className="text-stone-600 text-xs mt-10 tracking-wide">
-          Mo–Do 17:00–23:00 · Fr–Sa 17:00–00:00 · So 16:00–22:00
+          Di–Sa 11:30–23:00 · So 11:30–23:00 · Mo Geschlossen
         </p>
       </div>
     </section>

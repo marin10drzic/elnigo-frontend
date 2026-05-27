@@ -21,7 +21,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: "El Nigo Steakhouse",
-  description: "Premium cuts, bold flavors, and unforgettable evenings.",
+  description: "Premium Steakhouse — seit über 30 Jahren für das perfekte Steak.",
 };
 
 export default function RootLayout({
