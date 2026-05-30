@@ -2,6 +2,9 @@ import { apiClient } from "@/shared/lib/apiClient";
 import type { ChatChunk, ChatRequest, ChatSession } from "../model/types";
 
 export const chatApi = {
+  getAll: (token: string) =>
+    apiClient.get<ChatSession[]>("/ai/chats", token),
+
   getSession: (sessionId: string) =>
     apiClient.get<ChatSession>(`/ai/chat/${sessionId}`),
 

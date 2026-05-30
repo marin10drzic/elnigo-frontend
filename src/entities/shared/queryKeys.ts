@@ -17,6 +17,7 @@ export const queryKeys = {
       ["reservations", "availability", date, partySize] as const,
   },
   chat: {
+    all: ["chat"] as const,
     session: (sessionId: string) => ["chat", sessionId] as const,
   },
   users: {

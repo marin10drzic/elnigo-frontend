@@ -1,7 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import {
   Sidebar,
   SidebarContent,
@@ -16,7 +17,8 @@ import {
   SidebarProvider,
   SidebarTrigger,
 } from "@/shared/ui/sidebar";
-import { MessageSquare, CalendarDays, UtensilsCrossed, Users, ChefHat } from "lucide-react";
+import { MessageSquare, CalendarDays, UtensilsCrossed, Users, ChefHat, LogOut } from "lucide-react";
+import { authStore } from "@/shared/lib/authStore";
 
 const navItems = [
   { label: "Chats",        href: "/dashboard/chats",        icon: MessageSquare },
@@ -27,6 +29,34 @@ const navItems = [
 
 export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
+  const router = useRouter();
+  const [ready, setReady] = useState(false);
+
+  const isLoginPage = pathname.endsWith("/login");
+
+  useEffect(() => {
+    if (isLoginPage) return;
+    const token = authStore.getToken();
+    if (!token) {
+      const locale = pathname.split("/")[1] ?? "de";
+      router.replace(`/${locale}/dashboard/login`);
+    } else {
+      setReady(true);
+    }
+  }, [pathname, router, isLoginPage]);
+
+  const handleSignOut = () => {
+    authStore.clear();
+    const locale = pathname.split("/")[1] ?? "de";
+    router.replace(`/${locale}/dashboard/login`);
+  };
+
+  // login page renders standalone — no sidebar
+  if (pathname.endsWith("/login")) {
+    return <>{children}</>;
+  }
+
+  if (!ready) return null;
 
   return (
     <SidebarProvider>
@@ -65,10 +95,17 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
             </SidebarGroup>
           </SidebarContent>
 
-          <SidebarFooter className="px-4 py-4 border-t border-stone-800">
+          <SidebarFooter className="px-4 py-4 border-t border-stone-800 flex flex-col gap-3">
             <Link href="/" className="text-xs text-stone-500 hover:text-amber-400 transition-colors tracking-wide">
               ← Back to website
             </Link>
+            <button
+              onClick={handleSignOut}
+              className="flex items-center gap-2 text-xs text-stone-600 hover:text-red-400 transition-colors tracking-wide"
+            >
+              <LogOut className="w-3.5 h-3.5" />
+              Sign out
+            </button>
           </SidebarFooter>
         </Sidebar>
 
